@@ -1,6 +1,7 @@
-Flask
+flask
 flask-cors
 flask-mysqldb
 gunicorn
 python-dotenv
-Werkzeug
+werkzeug
+mysqlclient
