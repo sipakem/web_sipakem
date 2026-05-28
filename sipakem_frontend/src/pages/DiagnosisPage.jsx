@@ -26,7 +26,7 @@ export default function DiagnosisPage() {
     try {
       setLoading(true);
 
-      const response = await fetch("http://127.0.0.1:5000/diagnosis/all");
+      const response = await fetch("http://web-production-f90fd.up.railway.app/diagnosis/all");
       const data = await response.json();
 
       setDiagnosis(data);
@@ -64,7 +64,7 @@ export default function DiagnosisPage() {
   const confirmDelete = async () => {
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/diagnosis/${deletePopup.id}`,
+        `http://web-production-f90fd.up.railway.app/diagnosis/${deletePopup.id}`,
         {
           method: "DELETE",
           headers: {
