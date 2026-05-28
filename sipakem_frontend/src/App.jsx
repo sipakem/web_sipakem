@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SipakemLandingPage from "./pages/SipakemLandingPage";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
@@ -22,7 +22,7 @@ import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<SipakemLandingPage />} />
@@ -118,7 +118,7 @@ function App() {
           }
         />
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
