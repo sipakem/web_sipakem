@@ -85,7 +85,7 @@ export default function Navbar() {
               >
                 {user?.foto_profile ? (
                   <img
-                    src={`http://localhost:5000${user.foto_profile}`}
+                    src={`http://sipakembackend-production.up.railway.app${user.foto_profile}`}
                     alt="profile"
                     className="w-full h-full object-cover"
                   />
