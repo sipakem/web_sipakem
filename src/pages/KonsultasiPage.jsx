@@ -36,7 +36,7 @@ export default function KonsultasiPage() {
   const isGuest = !user;
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/gejala/all")
+    fetch("http://sipakembackend-production.up.railway.app/gejala/all")
       .then((res) => res.json())
       .then((data) => setGejalaList(data))
       .catch((err) => console.log(err));
@@ -77,7 +77,7 @@ export default function KonsultasiPage() {
 
       const penggunaId = user ? user.id_pengguna : null;
 
-      const response = await fetch("http://127.0.0.1:5000/konsultasi", {
+      const response = await fetch("http://sipakembackend-production.up.railway.app/konsultasi", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
