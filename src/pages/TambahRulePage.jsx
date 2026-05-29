@@ -44,9 +44,9 @@ export default function TambahRulePage() {
   const fetchMasterData = async () => {
     try {
       const [diagnosisRes, rekomendasiRes, gejalaRes] = await Promise.all([
-        fetch("http://127.0.0.1:5000/diagnosis/all"),
-        fetch("http://127.0.0.1:5000/rekomendasi/all"),
-        fetch("http://127.0.0.1:5000/gejala/all"),
+        fetch("http://sipakembackend-production.up.railway.app/diagnosis/all"),
+        fetch("http://sipakembackend-production.up.railway.app/rekomendasi/all"),
+        fetch("http://sipakembackend-production.up.railway.app/gejala/all"),
       ]);
 
       const diagnosisData = await diagnosisRes.json();
@@ -66,7 +66,7 @@ export default function TambahRulePage() {
     try {
       setLoading(true);
 
-      const response = await fetch(`http://127.0.0.1:5000/rule/${id}`);
+      const response = await fetch(`http://sipakembackend-production.up.railway.app/rule/${id}`);
 
       const data = await response.json();
 
@@ -142,8 +142,8 @@ export default function TambahRulePage() {
       setLoading(true);
 
       const url = isEdit
-        ? `http://127.0.0.1:5000/rule/${id}`
-        : "http://127.0.0.1:5000/rule";
+        ? `http://sipakembackend-production.up.railway.app/rule/${id}`
+        : "http://sipakembackend-production.up.railway.app/rule";
 
       const method = isEdit ? "PUT" : "POST";
 
