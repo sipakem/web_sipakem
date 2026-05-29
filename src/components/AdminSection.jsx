@@ -20,7 +20,7 @@ export default function AdminSection({
 
   // GET DATA
   const fetchData = async () => {
-    const response = await fetch(`http://sipakembackend-production.up.railway.app/${endpoint}`);
+    const response = await fetch(`https://sipakembackend-production.up.railway.app/${endpoint}`);
     const data = await response.json();
 
     setRows(data);
@@ -43,8 +43,8 @@ export default function AdminSection({
     e.preventDefault();
 
     const url = editId
-      ? `http://sipakembackend-production.up.railway.app/${endpoint}/${editId}`
-      : `http://sipakembackend-production.up.railway.app/${endpoint}`;
+      ? `https://sipakembackend-production.up.railway.app/${endpoint}/${editId}`
+      : `https://sipakembackend-production.up.railway.app/${endpoint}`;
 
     const method = editId ? "PUT" : "POST";
 
@@ -82,7 +82,7 @@ export default function AdminSection({
 
     if (!confirmDelete) return;
 
-    await fetch(`http://sipakembackend-production.up.railway.app/${endpoint}/${id}`, {
+    await fetch(`https://sipakembackend-production.up.railway.app/${endpoint}/${id}`, {
       method: "DELETE",
     });
 
