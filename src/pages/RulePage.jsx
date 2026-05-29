@@ -25,7 +25,7 @@ export default function RulePage() {
     try {
       setLoading(true);
 
-      const response = await fetch("http://sipakembackend-production.up.railway.app/rule");
+      const response = await fetch("https://sipakembackend-production.up.railway.app/rule");
       const data = await response.json();
 
       setRules(data);
@@ -62,7 +62,7 @@ export default function RulePage() {
   const confirmDelete = async () => {
     try {
       const response = await fetch(
-        `http://sipakembackend-production.up.railway.app/rule/${deletePopup.id}`,
+        `https://sipakembackend-production.up.railway.app/rule/${deletePopup.id}`,
         {
           method: "DELETE",
           headers: {
