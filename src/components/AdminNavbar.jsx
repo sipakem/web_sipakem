@@ -31,7 +31,7 @@ export default function AdminNavbar() {
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
-      <div className="w-full px-3 lg:px-6 h-[88px] grid grid-cols-3 items-center">
+      <div className="w-full px-3 lg:px-6 h-[88px] flex items-center justify-between lg:grid lg:grid-cols-3">
         {/* LOGO */}
         <div
           onClick={() => navigate("/admin")}
@@ -81,7 +81,7 @@ export default function AdminNavbar() {
             >
               {user?.foto_profile ? (
                 <img
-                  src={`https://sipakembackend-production.up.railway.app${user.foto_profile}`}
+                  src={`http://localhost:5000${user.foto_profile}`}
                   alt="admin"
                   className="w-full h-full object-cover"
                 />
@@ -147,27 +147,13 @@ export default function AdminNavbar() {
           </Link>
 
           {/* PROFILE MOBILE */}
-          <div
-            onClick={() => {
-              navigate("/profile");
-              setMenuOpen(false);
-            }}
-            className="flex items-center gap-3 cursor-pointer pt-2"
+          <Link
+            to="/profile"
+            className={menuClass("/profile")}
+            onClick={() => setMenuOpen(false)}
           >
-            <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-[#5e3e76] flex items-center justify-center bg-gray-100 shadow-md">
-              {user?.foto_profile ? (
-                <img
-                  src={`https://sipakembackend-production.up.railway.app${user.foto_profile}`}
-                  alt="admin"
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <FaUser className="text-gray-400 text-2xl" />
-              )}
-            </div>
-
-            <span className="text-[#5e3e76] font-medium text-lg">Profile</span>
-          </div>
+            Profil
+          </Link>
         </div>
       )}
     </header>
