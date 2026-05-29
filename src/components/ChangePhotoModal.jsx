@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaUser } from "react-icons/fa";
-import { FiX, FiCheckCircle } from "react-icons/fi";
+import { FiX, FiCheckCircle, FiAlertTriangle } from "react-icons/fi";
 import axios from "axios";
 
 export default function ChangePhotoModal({
@@ -12,12 +12,13 @@ export default function ChangePhotoModal({
 }) {
   const BASE_URL = "https://sipakembackend-production.up.railway.app";
 
-  // State untuk kontrol Custom Success Popup
   const [successPopup, setSuccessPopup] = useState({
     show: false,
     message: "",
   });
   
+  const [confirmDeletePopup, setConfirmDeletePopup] = useState(false);
+
   const onUploadClick = async () => {
     try {
       await handleUpload();
@@ -36,10 +37,9 @@ export default function ChangePhotoModal({
       console.error(error);
     }
   };
-
-  const handleDeletePhoto = async () => {
-    const confirmDelete = window.confirm("Yakin ingin menghapus foto profil?");
-    if (!confirmDelete) return;
+  
+  const executeDeletePhoto = async () => {
+    setConfirmDeletePopup(false);
 
     try {
       await axios.delete(`${BASE_URL}/delete-profile-photo/${userData.id_pengguna}`);
@@ -113,6 +113,7 @@ export default function ChangePhotoModal({
           </div>
         </div>
         
+        {/* Upload Area */}
         <label className="border-2 border-dashed border-gray-200 rounded-2xl h-44 flex flex-col items-center justify-center cursor-pointer hover:border-purple-400 transition bg-gray-50/50">
           <input
             type="file"
@@ -151,7 +152,7 @@ export default function ChangePhotoModal({
           
           {userData?.foto_profile && (
             <button
-              onClick={handleDeletePhoto}
+              onClick={() => setConfirmDeletePopup(true)}
               className="w-full bg-red-50 hover:bg-red-100 text-red-600 py-2.5 rounded-xl transition text-xs font-medium"
             >
               Hapus Foto Saat Ini
@@ -159,6 +160,40 @@ export default function ChangePhotoModal({
           )}
         </div>
       </div>
+
+      {confirmDeletePopup && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center">
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-black/40" />
+
+          {/* Modal Box */}
+          <div className="relative bg-white rounded-3xl shadow-xl p-6 w-[340px] text-center animation-fade-in">
+            <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-red-100 flex items-center justify-center">
+              <FiAlertTriangle className="text-red-600 text-3xl" />
+            </div>
+
+            <h2 className="text-xl font-bold mb-2 text-gray-800">Hapus Foto?</h2>
+            <p className="text-gray-500 text-sm mb-6 px-2">
+              Apakah Anda yakin ingin menghapus foto profil saat ini? Tindakan ini tidak dapat dibatalkan.
+            </p>
+
+            <div className="flex gap-3">
+              <button
+                onClick={() => setConfirmDeletePopup(false)}
+                className="flex-1 border border-gray-300 py-2.5 rounded-xl hover:bg-gray-50 transition text-sm font-medium text-gray-700"
+              >
+                Batal
+              </button>
+              <button
+                onClick={executeDeletePhoto}
+                className="flex-1 bg-red-600 hover:bg-red-700 text-white py-2.5 rounded-xl transition text-sm font-medium"
+              >
+                Ya, Hapus
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {successPopup.show && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center">
