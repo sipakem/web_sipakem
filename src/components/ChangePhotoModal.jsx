@@ -75,7 +75,7 @@ export default function ChangePhotoModal({
                 src={
                   selectedFile
                     ? URL.createObjectURL(selectedFile)
-                    : `${BASE_URL}${userData.foto_profile}`
+                    : `http://localhost:5000${userData.foto_profile}`
                 }
                 alt="Profile"
                 className="w-40 h-40 rounded-full object-cover border-4 border-purple-200"
@@ -146,3 +146,4 @@ export default function ChangePhotoModal({
     </div>
   );
 }
+
