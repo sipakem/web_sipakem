@@ -15,13 +15,9 @@ import TentangKami from "../components/TentangKami";
 
 export default function ProfilePage() {
   const [activeMenu, setActiveMenu] = useState("info");
-
   const [showPhotoModal, setShowPhotoModal] = useState(false);
-
   const [userData, setUserData] = useState(null);
-
   const [selectedFile, setSelectedFile] = useState(null);
-
   const [role, setRole] = useState("");
 
   useEffect(() => {
@@ -39,9 +35,8 @@ export default function ProfilePage() {
   const getProfile = async (id_pengguna) => {
     try {
       const response = await axios.get(
-        `https://sipakembackend-production.up.railway.app/profile/${id_pengguna}`,
+        `https://sipakembackend-production.up.railway.app/profile/${id_pengguna}`
       );
-
       setUserData(response.data);
     } catch (error) {
       console.log(error);
@@ -49,13 +44,9 @@ export default function ProfilePage() {
   };
 
   const handleUpload = async () => {
-    if (!selectedFile) {
-      alert("Pilih foto terlebih dahulu");
-      return;
-    }
+    if (!selectedFile) return;
 
     const formData = new FormData();
-
     formData.append("foto", selectedFile);
 
     try {
@@ -66,30 +57,21 @@ export default function ProfilePage() {
           headers: {
             "Content-Type": "multipart/form-data",
           },
-        },
+        }
       );
 
-      const updatedUser = {
-        ...userData,
-        foto_profile: response.data.foto_profile,
-      };
+      if (response.data.foto_profile) {
+        alert("Foto profil berhasil disimpan!");
 
-      setUserData(updatedUser);
+        const updatedUser = { ...userData, foto_profile: response.data.foto_profile };
+        localStorage.setItem("user", JSON.stringify(updatedUser));
 
-      localStorage.setItem("user", JSON.stringify(updatedUser));
-
-      // UPDATE NAVBAR OTOMATIS
-      window.dispatchEvent(new Event("userUpdated"));
-
-      alert("Foto berhasil diupload");
-
-      setSelectedFile(null);
-
-      setShowPhotoModal(false);
+        setSelectedFile(null);
+        window.location.reload();
+      }
     } catch (error) {
-      console.log(error);
-
-      alert("Gagal upload foto");
+      console.error("Gagal mengunggah foto profil:", error);
+      alert(error.response?.data?.message || "Terjadi galat pada server saat mengunggah.");
     }
   };
 
@@ -131,6 +113,7 @@ export default function ProfilePage() {
             {activeMenu === "history" && (
               <RiwayatKonsultasi onBack={() => setActiveMenu("settings")} />
             )}
+
             {/* Tentang Kami */}
             {activeMenu === "tentang-kami" && (
               <TentangKami onBack={() => setActiveMenu("settings")} />
@@ -139,6 +122,7 @@ export default function ProfilePage() {
         </div>
       </section>
 
+      {/* Modal Foto Profil */}
       {showPhotoModal && (
         <ChangePhotoModal
           onClose={() => setShowPhotoModal(false)}
