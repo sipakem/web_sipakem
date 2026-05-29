@@ -32,7 +32,7 @@ export default function TambahRekomendasiPage() {
     try {
       setLoading(true);
 
-      const response = await fetch(`http://sipakembackend-production.up.railway.app/rekomendasi/${id}`);
+      const response = await fetch(`https://sipakembackend-production.up.railway.app/rekomendasi/${id}`);
 
       const data = await response.json();
 
@@ -63,8 +63,8 @@ export default function TambahRekomendasiPage() {
       setLoading(true);
 
       const url = isEdit
-        ? `http://sipakembackend-production.up.railway.app/rekomendasi/${id}`
-        : "http://sipakembackend-production.up.railway.app/rekomendasi";
+        ? `https://sipakembackend-production.up.railway.app/rekomendasi/${id}`
+        : "https://sipakembackend-production.up.railway.app/rekomendasi";
 
       const method = isEdit ? "PUT" : "POST";
 
