@@ -33,7 +33,7 @@ export default function TambahDiagnosisPage() {
     try {
       setLoading(true);
 
-      const response = await fetch(`http://sipakembackend-production.up.railway.app/diagnosis/${id}`);
+      const response = await fetch(`https://sipakembackend-production.up.railway.app/diagnosis/${id}`);
 
       const data = await response.json();
 
@@ -63,8 +63,8 @@ export default function TambahDiagnosisPage() {
       setLoading(true);
 
       const url = isEdit
-        ? `http://sipakembackend-production.up.railway.app/diagnosis/${id}`
-        : "http://sipakembackend-production.up.railway.app/diagnosis";
+        ? `https://sipakembackend-production.up.railway.app/diagnosis/${id}`
+        : "https://sipakembackend-production.up.railway.app/diagnosis";
 
       const method = isEdit ? "PUT" : "POST";
 
