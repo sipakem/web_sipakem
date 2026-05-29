@@ -25,7 +25,7 @@ export default function GejalaPage() {
   // GET DATA
   const fetchGejala = async () => {
     try {
-      const response = await fetch("http://sipakembackend-production.up.railway.app/gejala/all");
+      const response = await fetch("https://sipakembackend-production.up.railway.app/gejala/all");
       const data = await response.json();
       setGejala(data);
     } catch (error) {
@@ -58,7 +58,7 @@ export default function GejalaPage() {
   const confirmDelete = async () => {
     try {
       const response = await fetch(
-        `http://sipakembackend-production.up.railway.app/gejala/${deletePopup.id}`,
+        `https://sipakembackend-production.up.railway.app/gejala/${deletePopup.id}`,
         {
           method: "DELETE",
           headers: {
