@@ -30,7 +30,7 @@ function Register() {
     e.preventDefault();
 
     try {
-      await axios.post("http://127.0.0.1:5000/register", form);
+      await axios.post("http://sipakembackend-production.up.railway.app/register", form);
 
       navigate("/");
     } catch (error) {
