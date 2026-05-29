@@ -52,7 +52,7 @@ export default function ProfileInfo({ userData, setUserData }) {
   const handleSubmit = async () => {
     try {
       await axios.put(
-        `http://sipakembackend-production.up.railway.app/profile/${userData.id_pengguna}`,
+        `https://sipakembackend-production.up.railway.app/profile/${userData.id_pengguna}`,
         form,
       );
 
