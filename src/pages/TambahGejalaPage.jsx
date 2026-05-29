@@ -30,7 +30,7 @@ export default function TambahGejalaPage() {
     try {
       setLoading(true);
 
-      const response = await fetch(`http://127.0.0.1:5000/gejala/${id}`);
+      const response = await fetch(`http://sipakembackend-production.up.railway.app/gejala/${id}`);
       const data = await response.json();
 
       setFormData({
@@ -58,8 +58,8 @@ export default function TambahGejalaPage() {
       setLoading(true);
 
       const url = isEdit
-        ? `http://127.0.0.1:5000/gejala/${id}`
-        : "http://127.0.0.1:5000/gejala";
+        ? `http://sipakembackend-production.up.railway.app/gejala/${id}`
+        : "http://sipakembackend-production.up.railway.app/gejala";
 
       const method = isEdit ? "PUT" : "POST";
 
