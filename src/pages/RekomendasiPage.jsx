@@ -27,7 +27,7 @@ export default function RekomendasiPage() {
     try {
       setLoading(true);
 
-      const response = await fetch("http://sipakembackend-production.up.railway.app/rekomendasi/all");
+      const response = await fetch("https://sipakembackend-production.up.railway.app/rekomendasi/all");
 
       const data = await response.json();
       setRekomendasi(data);
@@ -65,7 +65,7 @@ export default function RekomendasiPage() {
   const confirmDelete = async () => {
     try {
       const response = await fetch(
-        `http://sipakembackend-production.up.railway.app/rekomendasi/${deletePopup.id}`,
+        `https://sipakembackend-production.up.railway.app/rekomendasi/${deletePopup.id}`,
         {
           method: "DELETE",
           headers: {
