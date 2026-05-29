@@ -33,7 +33,7 @@ export default function TambahDiagnosisPage() {
     try {
       setLoading(true);
 
-      const response = await fetch(`http://127.0.0.1:5000/diagnosis/${id}`);
+      const response = await fetch(`http://sipakembackend-production.up.railway.app/diagnosis/${id}`);
 
       const data = await response.json();
 
@@ -63,8 +63,8 @@ export default function TambahDiagnosisPage() {
       setLoading(true);
 
       const url = isEdit
-        ? `http://127.0.0.1:5000/diagnosis/${id}`
-        : "http://127.0.0.1:5000/diagnosis";
+        ? `http://sipakembackend-production.up.railway.app/diagnosis/${id}`
+        : "http://sipakembackend-production.up.railway.app/diagnosis";
 
       const method = isEdit ? "PUT" : "POST";
 
