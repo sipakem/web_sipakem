@@ -58,7 +58,7 @@ export default function ChangePassword({ onBack }) {
 
     try {
       const response = await axios.put(
-        `http://localhost:5000/change-password/${user.id_pengguna}`,
+        `http://sipakembackend-production.up.railway.app/change-password/${user.id_pengguna}`,
         form,
       );
 
