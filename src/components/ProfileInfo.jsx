@@ -21,11 +21,25 @@ export default function ProfileInfo({ userData, setUserData }) {
 
   useEffect(() => {
     if (userData) {
+      let jenisKelaminFormatted = userData.jenis_kelamin || "";
+
+      if (
+        jenisKelaminFormatted.toLowerCase() === "laki-laki" ||
+        jenisKelaminFormatted.toUpperCase() === "Laki-laki"
+      ) {
+        jenisKelaminFormatted = "Laki-laki";
+      } else if (
+        jenisKelaminFormatted.toLowerCase() === "perempuan" ||
+        jenisKelaminFormatted.toUpperCase() === "Perempuan"
+      ) {
+        jenisKelaminFormatted = "Perempuan";
+      }
+
       setForm({
         nama_pengguna: userData.nama_pengguna || "",
         email: userData.email || "",
         tanggal_lahir: userData.tanggal_lahir || "",
-        jenis_kelamin: userData.jenis_kelamin || "",
+        jenis_kelamin: jenisKelaminFormatted,
         no_hp: userData.no_hp || "",
       });
     }
