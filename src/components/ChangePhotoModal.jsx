@@ -114,7 +114,7 @@ export default function ChangePhotoModal({
         </div>
         
         {/* Upload Area */}
-        <label className="border-2 border-dashed border-gray-200 rounded-2xl h-44 flex flex-col items-center justify-center cursor-pointer hover:border-purple-400 transition bg-gray-50/50">
+        <label className="border-2 border-dashed border-gray-300 rounded-3xl h-64 flex flex-col items-center justify-center cursor-pointer hover:border-purple-400 transition">
           <input
             type="file"
             hidden
@@ -130,36 +130,41 @@ export default function ChangePhotoModal({
           </p>
         </label>
 
-        {/* Action Buttons */}
-        <div className="flex flex-col gap-3 mt-6">
-          <div className="flex gap-3">
+        {/* Buttons */}
+        <div className="flex justify-between items-center mt-10">
+          {/* LEFT */}
+          <div>
+            {userData?.foto_profile && (
+              <button
+                onClick={handleDeletePhoto}
+                className="bg-red-100 hover:bg-red-200 text-red-600 px-6 py-3 rounded-2xl transition font-medium"
+              >
+                Hapus Foto
+              </button>
+            )}
+          </div>
+
+          {/* RIGHT */}
+          <div className="flex gap-5">
             <button
               onClick={() => {
                 setSelectedFile(null);
                 onClose();
               }}
-              className="flex-1 border border-gray-300 py-3 rounded-xl hover:bg-gray-50 transition text-sm font-medium"
+              className="border border-gray-300 px-8 py-3 rounded-2xl hover:bg-gray-100 transition"
             >
               Batal
             </button>
+
             <button
-              onClick={onUploadClick}
-              className="flex-1 bg-purple-700 hover:bg-purple-800 text-white py-3 rounded-xl transition text-sm font-medium"
+              onClick={handleUpload}
+              className="bg-purple-700 hover:bg-purple-800 text-white px-8 py-3 rounded-2xl transition"
             >
-              Simpan
+              Simpan Perubahan
             </button>
           </div>
-          
-          {userData?.foto_profile && (
-            <button
-              onClick={() => setConfirmDeletePopup(true)}
-              className="w-full bg-red-50 hover:bg-red-100 text-red-600 py-2.5 rounded-xl transition text-xs font-medium"
-            >
-              Hapus Foto Saat Ini
-            </button>
-          )}
         </div>
-      </div>
+
 
       {confirmDeletePopup && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center">
