@@ -24,7 +24,7 @@ export default function ProfileSidebar({
         >
           {userData?.foto_profile ? (
             <img
-              src={`http://sipakembackend-production.up.railway.app${userData.foto_profile}`}
+              src={`https://sipakembackend-production.up.railway.app${userData.foto_profile}`}
               alt="Profile"
               className="w-28 h-28 rounded-full object-cover border-4 border-[#5e3e76]"
             />
