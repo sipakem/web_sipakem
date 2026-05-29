@@ -26,7 +26,7 @@ export default function DiagnosisPage() {
     try {
       setLoading(true);
 
-      const response = await fetch("http://sipakembackend-production.up.railway.app/diagnosis/all");
+      const response = await fetch("https://sipakembackend-production.up.railway.app/diagnosis/all");
       const data = await response.json();
 
       setDiagnosis(data);
@@ -64,7 +64,7 @@ export default function DiagnosisPage() {
   const confirmDelete = async () => {
     try {
       const response = await fetch(
-        `http://sipakembackend-production.up.railway.app/diagnosis/${deletePopup.id}`,
+        `https://sipakembackend-production.up.railway.app/diagnosis/${deletePopup.id}`,
         {
           method: "DELETE",
           headers: {
