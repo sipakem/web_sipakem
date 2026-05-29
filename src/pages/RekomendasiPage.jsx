@@ -27,7 +27,7 @@ export default function RekomendasiPage() {
     try {
       setLoading(true);
 
-      const response = await fetch("http://127.0.0.1:5000/rekomendasi/all");
+      const response = await fetch("http://sipakembackend-production.up.railway.app/rekomendasi/all");
 
       const data = await response.json();
       setRekomendasi(data);
@@ -65,7 +65,7 @@ export default function RekomendasiPage() {
   const confirmDelete = async () => {
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/rekomendasi/${deletePopup.id}`,
+        `http://sipakembackend-production.up.railway.app/rekomendasi/${deletePopup.id}`,
         {
           method: "DELETE",
           headers: {
