@@ -39,7 +39,7 @@ export default function ProfilePage() {
   const getProfile = async (id_pengguna) => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/profile/${id_pengguna}`,
+        `http://sipakembackend-production.up.railway.app/profile/${id_pengguna}`,
       );
 
       setUserData(response.data);
@@ -60,7 +60,7 @@ export default function ProfilePage() {
 
     try {
       const response = await axios.post(
-        `http://localhost:5000/upload-profile/${userData.id_pengguna}`,
+        `http://sipakembackend-production.up.railway.app/upload-profile/${userData.id_pengguna}`,
         formData,
         {
           headers: {
