@@ -15,7 +15,7 @@ export default function ChangePhotoModal({
 
     try {
       await axios.delete(
-        `http://sipakembackend-production.up.railway.app/delete-profile-photo/${userData.id_pengguna}`,
+        `https://sipakembackend-production.up.railway.app/delete-profile-photo/${userData.id_pengguna}`,
       );
 
       const updatedUser = {
@@ -71,7 +71,7 @@ export default function ChangePhotoModal({
                 src={
                   selectedFile
                     ? URL.createObjectURL(selectedFile)
-                    : `http://sipakembackend-production.up.railway.app${userData.foto_profile}`
+                    : `https://sipakembackend-production.up.railway.app${userData.foto_profile}`
                 }
                 alt="Profile"
                 className="w-40 h-40 rounded-full object-cover border-4 border-purple-200"
