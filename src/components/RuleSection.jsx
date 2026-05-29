@@ -21,21 +21,21 @@ export default function RuleSection() {
   }, []);
 
   const fetchGejala = async () => {
-    const response = await fetch("http://sipakembackend-production.up.railway.app/gejala/all");
+    const response = await fetch("https://sipakembackend-production.up.railway.app/gejala/all");
     const data = await response.json();
 
     setGejala(data);
   };
 
   const fetchDiagnosis = async () => {
-    const response = await fetch("http://sipakembackend-production.up.railway.app/diagnosis/all");
+    const response = await fetch("https://sipakembackend-production.up.railway.app/diagnosis/all");
     const data = await response.json();
 
     setDiagnosis(data);
   };
 
   const fetchRekomendasi = async () => {
-    const response = await fetch("http://sipakembackend-production.up.railway.app/rekomendasi/all");
+    const response = await fetch("https://sipakembackend-production.up.railway.app/rekomendasi/all");
     const data = await response.json();
 
     setRekomendasi(data);
@@ -68,7 +68,7 @@ export default function RuleSection() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await fetch("http://sipakembackend-production.up.railway.app/rule", {
+    await fetch("https://sipakembackend-production.up.railway.app/rule", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
