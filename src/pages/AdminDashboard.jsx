@@ -36,7 +36,7 @@ export default function AdminDashboard() {
 
   const getDashboard = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/dashboard-admin");
+      const response = await axios.get("http://sipakembackend-production.up.railway.app/dashboard-admin");
 
       setDashboard(response.data);
     } catch (error) {
