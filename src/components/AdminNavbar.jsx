@@ -81,7 +81,7 @@ export default function AdminNavbar() {
             >
               {user?.foto_profile ? (
                 <img
-                  src={`http://localhost:5000${user.foto_profile}`}
+                  src={`http://sipakembackend-production.up.railway.app${user.foto_profile}`}
                   alt="admin"
                   className="w-full h-full object-cover"
                 />
@@ -157,7 +157,7 @@ export default function AdminNavbar() {
             <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-[#5e3e76] flex items-center justify-center bg-gray-100 shadow-md">
               {user?.foto_profile ? (
                 <img
-                  src={`http://localhost:5000${user.foto_profile}`}
+                  src={`http://sipakembackend-production.up.railway.app${user.foto_profile}`}
                   alt="admin"
                   className="w-full h-full object-cover"
                 />
