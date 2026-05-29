@@ -26,7 +26,7 @@ export default function RiwayatKonsultasi({ onBack }) {
       const user = JSON.parse(localStorage.getItem("user"));
 
       const response = await axios.get(
-        `http://sipakembackend-production.up.railway.app/riwayat-konsultasi/${user.id_pengguna}`,
+        `https://sipakembackend-production.up.railway.app/riwayat-konsultasi/${user.id_pengguna}`,
       );
 
       setData(response.data);
@@ -45,7 +45,7 @@ export default function RiwayatKonsultasi({ onBack }) {
   const confirmDelete = async () => {
     try {
       await axios.delete(
-        `http://sipakembackend-production.up.railway.app/riwayat-konsultasi/${deletePopup.id}`,
+        `https://sipakembackend-production.up.railway.app/riwayat-konsultasi/${deletePopup.id}`,
       );
 
       setData((prev) => prev.filter((item) => item.id !== deletePopup.id));
