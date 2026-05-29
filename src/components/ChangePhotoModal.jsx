@@ -12,11 +12,13 @@ export default function ChangePhotoModal({
 }) {
   const BASE_URL = "https://sipakembackend-production.up.railway.app";
 
+  // State untuk kontrol Custom Success Popup
   const [successPopup, setSuccessPopup] = useState({
     show: false,
     message: "",
   });
   
+  // State untuk kontrol Custom Confirmation Popup (Hapus Foto)
   const [confirmDeletePopup, setConfirmDeletePopup] = useState(false);
 
   const onUploadClick = async () => {
@@ -72,6 +74,7 @@ export default function ChangePhotoModal({
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
       <div className="bg-white w-[420px] rounded-[30px] p-6 relative shadow-lg">
+        {/* Tombol Close */}
         <button
           onClick={() => {
             setSelectedFile(null);
@@ -130,49 +133,46 @@ export default function ChangePhotoModal({
           </p>
         </label>
 
-        {/* Buttons */}
-        <div className="flex justify-between items-center mt-10">
-          {/* LEFT */}
+        {/* Action Buttons Layout */}
+        <div className="flex justify-between items-center mt-6">
+          {/* LEFT: Tombol Hapus Foto */}
           <div>
             {userData?.foto_profile && (
               <button
-                onClick={handleDeletePhoto}
-                className="bg-red-100 hover:bg-red-200 text-red-600 px-6 py-3 rounded-2xl transition font-medium"
+                onClick={() => setConfirmDeletePopup(true)}
+                className="bg-red-50 hover:bg-red-100 text-red-600 px-4 py-2.5 rounded-xl transition text-xs font-medium"
               >
                 Hapus Foto
               </button>
             )}
           </div>
 
-          {/* RIGHT */}
-          <div className="flex gap-5">
+          {/* RIGHT: Tombol Batal & Simpan */}
+          <div className="flex gap-2.5">
             <button
               onClick={() => {
                 setSelectedFile(null);
                 onClose();
               }}
-              className="border border-gray-300 px-8 py-3 rounded-2xl hover:bg-gray-100 transition"
+              className="border border-gray-300 px-4 py-2.5 rounded-xl hover:bg-gray-50 transition text-xs font-medium text-gray-700"
             >
               Batal
             </button>
-
             <button
-              onClick={handleUpload}
-              className="bg-purple-700 hover:bg-purple-800 text-white px-8 py-3 rounded-2xl transition"
+              onClick={onUploadClick}
+              className="bg-purple-700 hover:bg-purple-800 text-white px-5 py-2.5 rounded-xl transition text-xs font-medium"
             >
-              Simpan Perubahan
+              Simpan
             </button>
           </div>
         </div>
-
+      </div>
 
       {confirmDeletePopup && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center">
-          {/* Backdrop */}
           <div className="absolute inset-0 bg-black/40" />
 
-          {/* Modal Box */}
-          <div className="relative bg-white rounded-3xl shadow-xl p-6 w-[340px] text-center animation-fade-in">
+          <div className="relative bg-white rounded-3xl shadow-xl p-6 w-[340px] text-center">
             <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-red-100 flex items-center justify-center">
               <FiAlertTriangle className="text-red-600 text-3xl" />
             </div>
@@ -199,7 +199,7 @@ export default function ChangePhotoModal({
           </div>
         </div>
       )}
-
+      
       {successPopup.show && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center">
           <div className="absolute inset-0 bg-black/40" />
