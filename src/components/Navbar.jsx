@@ -85,7 +85,7 @@ export default function Navbar() {
               >
                 {user?.foto_profile ? (
                   <img
-                    src={`https://sipakembackend-production.up.railway.app${user.foto_profile}`}
+                    src={`http://localhost:5000${user.foto_profile}`}
                     alt="profile"
                     className="w-full h-full object-cover"
                   />
@@ -138,11 +138,11 @@ export default function Navbar() {
             </Link>
 
             <Link
-              to="/konsultasi"
+              to="/analitik"
               onClick={() => setMenuOpen(false)}
-              className={menuClass("/konsultasi")}
+              className={menuClass("/analitik")}
             >
-              Konsultasi
+              Analitik
             </Link>
 
             <Link
@@ -151,6 +151,14 @@ export default function Navbar() {
               className={menuClass("/informasi")}
             >
               Informasi
+            </Link>
+
+            <Link
+              to="/konsultasi"
+              onClick={() => setMenuOpen(false)}
+              className={menuClass("/konsultasi")}
+            >
+              Konsultasi
             </Link>
 
             {isLoggedIn ? (
