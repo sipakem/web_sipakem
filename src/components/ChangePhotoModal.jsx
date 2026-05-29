@@ -18,8 +18,10 @@ export default function ChangePhotoModal({
     try {
       await axios.delete(`${BASE_URL}/delete-profile-photo/${userData.id_pengguna}`);
 
+      const currentLocalUser = JSON.parse(localStorage.getItem("user")) || {};
+
       const updatedUser = {
-        ...userData,
+        ...currentLocalUser,
         foto_profile: null,
       };
 
@@ -40,7 +42,6 @@ export default function ChangePhotoModal({
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
       <div className="bg-white w-[720px] rounded-[35px] p-8 relative">
-        {/* Tombol Close */}
         <button
           onClick={() => {
             setSelectedFile(null);
@@ -51,19 +52,16 @@ export default function ChangePhotoModal({
           ×
         </button>
 
-        {/* Title */}
         <div className="mb-10">
           <h2 className="text-4xl font-bold text-gray-800 mb-3">
             Ganti Foto Profil
           </h2>
-
           <p className="text-gray-500">
             Pilih foto baru untuk profil anda. Pastikan foto yang digunakan
             jelas dan sopan
           </p>
         </div>
 
-        {/* Preview */}
         <div className="flex justify-center mb-10">
           <div className="relative">
             {selectedFile || userData?.foto_profile ? (
@@ -104,9 +102,9 @@ export default function ChangePhotoModal({
           </p>
         </label>
 
-        {/* Buttons */}
+        {/* Buttons Action Group */}
         <div className="flex justify-between items-center mt-10">
-          {/* LEFT */}
+          {/* LEFT BUTTON: Hapus Foto */}
           <div>
             {userData?.foto_profile && (
               <button
@@ -118,7 +116,7 @@ export default function ChangePhotoModal({
             )}
           </div>
 
-          {/* RIGHT */}
+          {/* RIGHT BUTTONS: Batal & Simpan */}
           <div className="flex gap-5">
             <button
               onClick={() => {
