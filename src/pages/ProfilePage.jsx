@@ -62,8 +62,13 @@ export default function ProfilePage() {
 
       if (response.data.foto_profile) {
         alert("Foto profil berhasil disimpan!");
+        const currentLocalUser = JSON.parse(localStorage.getItem("user")) || {};
 
-        const updatedUser = { ...userData, foto_profile: response.data.foto_profile };
+        const updatedUser = { 
+          ...currentLocalUser,
+          foto_profile: response.data.foto_profile 
+        };
+        
         localStorage.setItem("user", JSON.stringify(updatedUser));
 
         setSelectedFile(null);
