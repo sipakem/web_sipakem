@@ -36,7 +36,7 @@ export default function InformasiPage() {
 
   const getDiagnosis = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/diagnosis/all");
+      const response = await axios.get("http://sipakembackend-production.up.railway.app/diagnosis/all");
 
       setJenisKecemasan(response.data);
     } catch (error) {
