@@ -9,12 +9,15 @@ export default function AdminNavbar() {
 
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [user, setUser] = useState(null);
+  const BASE_URL = "https://sipakembackend-production.up.railway.app";
 
   useEffect(() => {
     const updateUser = () => {
       setUser(JSON.parse(localStorage.getItem("user")));
     };
+
+    updateUser();
 
     window.addEventListener("userUpdated", updateUser);
 
@@ -81,7 +84,7 @@ export default function AdminNavbar() {
             >
               {user?.foto_profile ? (
                 <img
-                  src={`http://localhost:5000${user.foto_profile}`}
+                  src={`${BASE_URL}${user.foto_profile}`}
                   alt="admin"
                   className="w-full h-full object-cover"
                 />
