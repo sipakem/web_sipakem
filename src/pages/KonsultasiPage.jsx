@@ -204,7 +204,7 @@ export default function KonsultasiPage() {
             </div>
 
             {/* BUTTON RESPONSIVE */}
-            <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-3 mt-8">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-3 mt-8">
               <div className="w-full sm:w-auto">
                 {currentPage > 0 && (
                   <button
