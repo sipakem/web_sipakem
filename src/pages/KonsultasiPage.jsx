@@ -203,14 +203,14 @@ export default function KonsultasiPage() {
               ))}
             </div>
 
-            {/* BUTTON */}
-            <div className="flex justify-between items-center mt-8">
-              <div>
+            {/* BUTTON RESPONSIVE */}
+            <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-3 mt-8">
+              <div className="w-full sm:w-auto">
                 {currentPage > 0 && (
                   <button
                     title="Sebelumnya"
                     onClick={() => setCurrentPage((prev) => prev - 1)}
-                    className="border border-[#5e3e76] text-[#5e3e76] hover:bg-[#f6f1fa] px-6 py-3 rounded-2xl transition shadow-sm flex items-center gap-2"
+                    className="border border-[#5e3e76] text-[#5e3e76] hover:bg-[#f6f1fa] px-4 py-2.5 sm:px-6 sm:py-3 text-sm sm:text-base rounded-2xl transition shadow-sm flex items-center justify-center gap-2 w-full sm:w-auto"
                   >
                     <FaArrowLeft />
                     Sebelumnya
@@ -226,7 +226,7 @@ export default function KonsultasiPage() {
                     setCurrentPage((prev) => prev + 1);
                   }
                 }}
-                className="bg-[#5e3e76] hover:bg-[#4a2f5d] text-white px-6 py-3 rounded-2xl transition shadow-md flex items-center gap-2"
+                className="bg-[#5e3e76] hover:bg-[#4a2f5d] text-white px-4 py-2.5 sm:px-6 sm:py-3 text-sm sm:text-base rounded-2xl transition shadow-md flex items-center justify-center gap-2 w-full sm:w-auto"
               >
                 {isLastPage ? (
                   <>
